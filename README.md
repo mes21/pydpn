@@ -19,7 +19,6 @@ activeMode = dpn.mode.dpnMode
 if activeMode != "smart":
     dpn.mode.set_dpnMode("smart")
 
-
 ```
 
 ## Commandline
@@ -60,3 +59,10 @@ More information on the DeeperNetwork product can be found [**here**](https://sh
 If you like the project consider buying your DeeperNetwork hardware with my affiliat [**link**](https://shop.deeper.network/?sca_ref=3122711.jthhvz8Ao8&sca_source=GitHub)
 
 chears!
+
+# ToDo´s
+There are a lot of them, i consider this package in its very beginners phase
+
+My goal for this python package is to achive everything that could be configured from the browser interface provided by the dpn devices in python code and from commandline
+
+Feedback and suggestions are greatly appreciated!
