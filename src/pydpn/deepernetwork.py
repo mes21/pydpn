@@ -12,6 +12,8 @@ from pydpn._api import *
 
 
 class DeeperNetwork:
+    """Class for configuring a DeeperNetwork device"""
+
     def __init__(
         self,
         username,
@@ -166,10 +168,10 @@ class DeeperNetwork:
         for script in soup.find_all("script"):
             if not script.attrs:
                 return None
-            
+
             if "src" not in script.attrs.keys():
                 return None
-            
+
             jsUrl = self.hostIp + script.attrs["src"]
             resp = self.session.get(jsUrl, proxies=self.proxy)
             if all(
@@ -178,14 +180,8 @@ class DeeperNetwork:
                     endPublicKey in resp.text,
                 ]
             ):
-                pubKeyText = resp.text.split(beginPublicKey)[1].split(
-                    endPublicKey
-                )[0]
-                return (
-                    beginPublicKey
-                    + pubKeyText.replace("\\n", "\n")
-                    + endPublicKey
-                )
+                pubKeyText = resp.text.split(beginPublicKey)[1].split(endPublicKey)[0]
+                return beginPublicKey + pubKeyText.replace("\\n", "\n") + endPublicKey
 
     def _api_get(self, refUrl: str, apiRoute: str) -> Response:
         self.session.headers.update({"Referer": refUrl})
